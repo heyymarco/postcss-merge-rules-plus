@@ -1,0 +1,38 @@
+{
+  "name": "postcss-merge-rules-plus",
+  "version": "1.0.0",
+  "description": "Merge css rules (selectors) with PostCSS",
+  "main": "dist/index.js",
+  "dependencies": {
+    "browserslist": "^4.16.3",
+    "caniuse-api": "^3.0.0",
+    "cssnano-util-same-parent": "^4.0.1",
+    "postcss": "^7.0.35",
+    "postcss-selector-parser": "^6.0.4"
+  },
+  "devDependencies": {
+    "@types/caniuse-api": "^3.0.1",
+    "@types/node": "^14.14.25"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heyymarco/postcss-merge-rules-plus.git"
+  },
+  "keywords": [
+    "css",
+    "rules",
+    "selectors",
+    "merge",
+    "combine",
+    "postcss"
+  ],
+  "author": "heymarco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heyymarco/postcss-merge-rules-plus/issues"
+  },
+  "homepage": "https://github.com/heyymarco/postcss-merge-rules-plus#readme"
+}
