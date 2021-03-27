@@ -144,7 +144,7 @@ function selectorMerger(browsers: string[], compatibilityCache: any) {
 
 
                 // copy all props into cacheRule
-                (currentRule.nodes as postcss.Declaration[]).forEach(n1 => {
+                Array.from(currentRule.nodes as postcss.Declaration[]).forEach(n1 => {
                     const found = (cacheRule.nodes as postcss.Declaration[]).find(n2 => propEquals(n1, n2, false));
                     if (found) {
                         if ((!found.important) || n1.important) {
@@ -172,7 +172,7 @@ function selectorMerger(browsers: string[], compatibilityCache: any) {
 
                 return !!found;
             });
-            intersectedNodes.forEach(n1 => n1.remove()); // remove prop from cacheRule
+            Array.from(intersectedNodes).forEach(n1 => n1.remove()); // remove prop from cacheRule
 
             if (intersectedNodes.length) { // if cacheRule & currentRule has intersection
                 // create a new intersected rule instance

@@ -1,6 +1,6 @@
 {
   "name": "postcss-merge-rules-plus",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Merge css rules (selectors) with PostCSS",
   "main": "dist/index.js",
   "dependencies": {

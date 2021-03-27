@@ -114,7 +114,7 @@ function selectorMerger(browsers, compatibilityCache) {
             if (isFullyIntersect) {
                 // debug(`    merge union: ${currentRule.selectors.join(', ')} : ${ currentRule.nodes.map(node => `${node.prop}=${node.value}`).join("; ") }`);
                 // copy all props into cacheRule
-                currentRule.nodes.forEach(n1 => {
+                Array.from(currentRule.nodes).forEach(n1 => {
                     const found = cacheRule.nodes.find(n2 => propEquals(n1, n2, false));
                     if (found) {
                         if ((!found.important) || n1.important) {
@@ -138,7 +138,7 @@ function selectorMerger(browsers, compatibilityCache) {
                 }
                 return !!found;
             });
-            intersectedNodes.forEach(n1 => n1.remove()); // remove prop from cacheRule
+            Array.from(intersectedNodes).forEach(n1 => n1.remove()); // remove prop from cacheRule
             if (intersectedNodes.length) { // if cacheRule & currentRule has intersection
                 // create a new intersected rule instance
                 const intersectedRule = cacheRule.cloneBefore();
