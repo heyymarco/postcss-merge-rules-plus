@@ -1,4 +1,2 @@
-import postcss from 'postcss';
-declare const _default: postcss.Plugin<unknown>;
-export default _default;
+export {};
 //# sourceMappingURL=index.d.ts.map

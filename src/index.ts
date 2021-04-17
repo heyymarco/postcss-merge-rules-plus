@@ -1,5 +1,5 @@
 import browserslist          from 'browserslist';
-import postcss               from 'postcss';
+import type * as postcss from 'postcss';
 // import vendors              from 'vendors';
 // @ts-ignore
 import cssnanoUtilSameParent from 'cssnano-util-same-parent';
@@ -220,9 +220,11 @@ function selectorMerger(browsers: string[], compatibilityCache: any) {
     } // function (currentRule)
 }
 
-export default postcss.plugin('postcss-merge-rule-plus', () =>
-    (css: postcss.Root) => {
-
+module.exports = (opts = {}) => {
+    //checkOpts(opts)
+    return {
+      postcssPlugin: 'postcss-merge-rule-plus',
+      Once (css: postcss.Root)  {
         const result: any = {};
 
         const resultOpts = result.opts || {};
@@ -236,5 +238,7 @@ export default postcss.plugin('postcss-merge-rule-plus', () =>
         
         // Callback for each rule node.
         css.walkRules(selectorMerger(browsers, compatibilityCache));
+     }
     }
-);
+}
+module.exports.postcss = true

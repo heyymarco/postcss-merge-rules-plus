@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const browserslist_1 = __importDefault(require("browserslist"));
-const postcss_1 = __importDefault(require("postcss"));
 // import vendors              from 'vendors';
 // @ts-ignore
 const cssnano_util_same_parent_1 = __importDefault(require("cssnano-util-same-parent"));
@@ -174,15 +173,22 @@ function selectorMerger(browsers, compatibilityCache) {
         caches.push(currentRule);
     }; // function (currentRule)
 }
-exports.default = postcss_1.default.plugin('postcss-merge-rule-plus', () => (css) => {
-    const result = {};
-    const resultOpts = result.opts || {};
-    const browsers = browserslist_1.default(null, {
-        stats: resultOpts.stats,
-        path: __dirname,
-        env: resultOpts.env
-    });
-    const compatibilityCache = {};
-    // Callback for each rule node.
-    css.walkRules(selectorMerger(browsers, compatibilityCache));
-});
+module.exports = (opts = {}) => {
+    //checkOpts(opts)
+    return {
+        postcssPlugin: 'postcss-merge-rule-plus',
+        Once(css) {
+            const result = {};
+            const resultOpts = result.opts || {};
+            const browsers = browserslist_1.default(null, {
+                stats: resultOpts.stats,
+                path: __dirname,
+                env: resultOpts.env
+            });
+            const compatibilityCache = {};
+            // Callback for each rule node.
+            css.walkRules(selectorMerger(browsers, compatibilityCache));
+        }
+    };
+};
+module.exports.postcss = true;
