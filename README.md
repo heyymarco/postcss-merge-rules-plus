@@ -1,6 +1,8 @@
 # postcss-merge-rules-plus
 
-PostCSS plugin to combine css rules (selectors) that have (fully or partially) identical declarations.
+[PostCSS] plugin for combining css rules (selectors) that have fully/partially identical declarations.
+
+[PostCSS]: https://github.com/postcss/postcss
 
 ## Features
 * Combines selectors with fully identical rules.
@@ -27,11 +29,33 @@ PostCSS plugin to combine css rules (selectors) that have (fully or partially) i
 .d { z-index: 2; text-align: center; }
 ```
 
-## Installation
+## Usage
+
+**Step 1:** Install plugin:
 
 ```sh
-npm i postcss-merge-rules-plus --save-dev
+npm install --save-dev postcss postcss-merge-rules-plus
 ```
+
+**Step 2:** Check you project for existed PostCSS config: `postcss.config.js`
+in the project root, `"postcss"` section in `package.json`
+or `postcss` in bundle config.
+
+If you do not use PostCSS, add it according to [official docs]
+and set this plugin in settings.
+
+**Step 3:** Add the plugin to plugins list:
+
+```diff
+module.exports = {
+  plugins: [
++   require('postcss-merge-rules-plus'),
+    require('autoprefixer')
+  ]
+}
+```
+
+[official docs]: https://github.com/postcss/postcss#usage
 
 ## Usage
 

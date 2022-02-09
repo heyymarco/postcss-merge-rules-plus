@@ -66,7 +66,7 @@ function isSupportedCached(feature, browsers) {
     const key = JSON.stringify({ feature, browsers });
     let result = isSupportedCache[key];
     if (!result) {
-        result = caniuse_api_1.isSupported(feature, browsers);
+        result = (0, caniuse_api_1.isSupported)(feature, browsers);
         isSupportedCache[key] = result;
     }
     return result;
@@ -84,7 +84,7 @@ function ensureCompatibility(selectors, browsers, compatibilityCache) {
             return compatibilityCache[selector];
         }
         let compatible = true;
-        postcss_selector_parser_1.default(ast => {
+        (0, postcss_selector_parser_1.default)(ast => {
             ast.walk(node => {
                 const { type, value } = node;
                 if (type === 'pseudo') {
